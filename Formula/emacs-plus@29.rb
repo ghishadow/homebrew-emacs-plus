@@ -2,8 +2,12 @@ require_relative "../Library/EmacsBase"
 
 class EmacsPlusAT29 < EmacsBase
   init 29
-  version "29.0.50"
+  version "29.0.60"
   env :std
+
+  head do
+    url "https://github.com/emacs-mirror/emacs.git", :branch => "emacs-29"
+  end
 
   #
   # Options
@@ -21,6 +25,7 @@ class EmacsPlusAT29 < EmacsBase
   option "with-native-comp", "Build with native compilation"
   option "with-compress-install", "Build with compressed install optimization"
   option "with-poll", "Experimental: use poll() instead of select() to support > 1024 file descriptors`"
+  option "with-tree-sitter", "Build with tree sitter support"
 
   #
   # Dependencies
@@ -55,6 +60,10 @@ class EmacsPlusAT29 < EmacsBase
     depends_on "gmp" => :build
     depends_on "libjpeg" => :build
     depends_on "zlib" => :build
+  end
+  
+  if build.with? "tree-sitter"
+    depends_on "tree-sitter" => :build
   end
 
   #
@@ -118,6 +127,7 @@ class EmacsPlusAT29 < EmacsBase
 
     args << "--with-native-compilation" if build.with? "native-comp"
     args << "--without-compress-install" if build.without? "compress-install"
+    args << "--with-tree-sitter" if build.with? "tree-sitter"
 
     ENV.append "CFLAGS", "-g -Og" if build.with? "debug"
     ENV.append "CFLAGS", "-DFD_SETSIZE=10000 -DDARWIN_UNLIMITED_SELECT"
