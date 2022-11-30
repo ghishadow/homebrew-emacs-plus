@@ -7,12 +7,6 @@
 #   $ ./build 25 --without-spacemacs-icon --HEAD
 #
 
-SOURCE_FILE_26=Formula/emacs-plus@26.rb
-SOURCE_NAME_26=EmacsPlusAT26
-
-SOURCE_FILE_27=Formula/emacs-plus@27.rb
-SOURCE_NAME_27=EmacsPlusAT27
-
 SOURCE_FILE_28=Formula/emacs-plus@28.rb
 SOURCE_NAME_28=EmacsPlusAT28
 
@@ -52,14 +46,6 @@ VERSION=$1
 shift
 
 case $VERSION in
-  26)
-    SOURCE_FILE=$SOURCE_FILE_26
-    SOURCE_NAME=$SOURCE_NAME_26
-    ;;
-  27)
-    SOURCE_FILE=$SOURCE_FILE_27
-    SOURCE_NAME=$SOURCE_NAME_27
-    ;;
   28)
     SOURCE_FILE=$SOURCE_FILE_28
     SOURCE_NAME=$SOURCE_NAME_28
