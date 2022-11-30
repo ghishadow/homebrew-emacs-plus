@@ -5,6 +5,10 @@ class EmacsPlusAT29 < EmacsBase
   version "29.0.50"
   env :std
 
+  head do
+    url "https://github.com/emacs-mirror/emacs.git", :branch => "emacs-29"
+  end
+
   #
   # Options
   #
